@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "46019019216",
+    "project_id": "mamaiknow-159d7",
+    "storage_bucket": "mamaiknow-159d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46019019216:android:a9cca5ab8769a31625b9d5",
+        "android_client_info": {
+          "package_name": "com.zeepalm.mamaiknow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgFCyTdAHg4_8PYUxorfOb_zhNju7f8Yw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
