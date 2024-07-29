@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
+import 'package:mamaiknow/Providers/Logging.dart';
 import 'package:mamaiknow/Providers/PeriodTracker.dart';
 import 'package:mamaiknow/Screens/LandingPgae.dart';
 
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => PeriodTrackerProvider()),
+           ChangeNotifierProvider(create: (_) => LoggingProvider()),
         ],
         child: ScreenUtilInit(
           designSize: const Size(375, 812),

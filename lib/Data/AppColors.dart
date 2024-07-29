@@ -21,6 +21,16 @@ class AppColors {
   static Color kpurple = const Color(0xFF430099);
   static Color kdeeppurple = const Color(0xFF7000ff);
   static Color klime = const Color(0xFFD1FF1B);
+  static Color ksemiTransparentGrey = const Color(0xCC1E1E1E); // #1E1E1ECC
+
+  static LinearGradient customGradient = const LinearGradient(
+    colors: [
+      Color(0xFF1E1E1ECC), // Light Blue
+      Color(0xFFFF002D), // Red
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 
   static const defaultOverlay = SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,

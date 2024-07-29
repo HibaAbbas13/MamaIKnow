@@ -27,7 +27,7 @@ List<UpperCard> uppercardlist = [
     subtitle: 'Next Period',
     date: 'Aug 5',
     icon: true,
-    color: const Color(0xFF5ede36),
+    color: const Color(0xFFFF002E),
     type: 'Cramps',
   ),
   UpperCard(
@@ -35,7 +35,43 @@ List<UpperCard> uppercardlist = [
     title: 'Fertility',
     subtitle: 'Ovulation',
     date: 'Aug 7',
-    color: const Color(0xFFFF002E),
+    color: const Color(0xFF5ede36),
     type: 'Cervical Mucus',
+  ),
+];
+
+class LowerCard {
+  String image;
+  String title;
+
+  String icon;
+
+  LowerCard({
+    required this.image,
+    required this.title,
+    required this.icon,
+  });
+}
+
+List<LowerCard> lowercardlist = [
+  LowerCard(
+    image: "assets/icons/Group.svg",
+    title: 'Period Cycle\nTracker',
+    icon: 'assets/icons/essentails.svg',
+  ),
+  LowerCard(
+    image: 'assets/icons/sprout-tree.svg',
+    title: 'Fertility Period\nTracker',
+    icon: 'assets/icons/essentails.svg',
+  ),
+  LowerCard(
+    image: 'assets/icons/dove.svg',
+    title: 'Pregnancy\nTracker',
+    icon: 'assets/icons/essentails.svg',
+  ),
+  LowerCard(
+    image: 'assets/icons/hearts-heart.svg',
+    title: 'Contractions\nTracker',
+    icon: 'assets/icons/essentails.svg',
   ),
 ];

@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppIcons.dart';
 import 'package:mamaiknow/Screens/HomeScreen/HomeScreen.dart';
-import 'package:mamaiknow/Screens/Trackers/Components/TrackerCard.dart';
-import 'package:mamaiknow/models/TrackerModels.dart';
+
+import 'package:mamaiknow/Screens/Trackers/TrackerScreen.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({
@@ -21,9 +21,7 @@ class _LandingPageState extends State<LandingPage> {
 
   List<Widget> pages = [
     HomeScreen(),
-    TrackerCard(
-      uppercard: uppercardlist,
-    ),
+    TrackerScreen(),
     Container(),
     Container(),
     Container(),

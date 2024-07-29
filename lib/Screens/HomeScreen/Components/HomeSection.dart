@@ -30,17 +30,9 @@ class _HomeSectionState extends State<HomeSection> {
             height: 290.h,
             width: 240.w,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24.r),
-                //  color: AppColors.kGrey900,
-                gradient: LinearGradient(
-                  colors: [
-                    AppColors.kGrey02,
-                    AppColors.kGrey01,
-                    AppColors.klime,
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                )),
+              borderRadius: BorderRadius.circular(24.r),
+              color: AppColors.ksemiTransparentGrey,
+            ),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
