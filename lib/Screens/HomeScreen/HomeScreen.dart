@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
 import 'package:mamaiknow/Screens/Components/CustomAppBar.dart';
-
 import 'package:mamaiknow/Screens/HomeScreen/Components/CustomHeader.dart';
 import 'package:mamaiknow/Screens/HomeScreen/Components/HomeSection.dart';
 import 'package:mamaiknow/Screens/HomeScreen/Components/Capsule.dart';
@@ -49,69 +48,75 @@ class HomeScreen extends StatelessWidget {
               subtitle: 'Defia Yoe',
               circleColor: AppColors.klime,
             ),
-            body: Container(
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color(0x1A000000),
-                    offset: Offset(0, 4),
-                    blurRadius: 24,
-                    spreadRadius: 0,
-                  ),
-                ],
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomCalendarHeader(
-                        focusedDay: _focusedDay,
-                        onLeftArrowTap: _handleLeftArrowTap,
-                        onRightArrowTap: _handleRightArrowTap,
-                      ),
-                      Capsule(
-                        key: _dateListKey,
-                        startDate: _focusedDay,
-                        days: _daysToDisplay,
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
+            body: SafeArea(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x1A000000),
+                      offset: Offset(0, 4),
+                      blurRadius: 24,
+                      spreadRadius: 0,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomCalendarHeader(
+                          focusedDay: _focusedDay,
+                          onLeftArrowTap: _handleLeftArrowTap,
+                          onRightArrowTap: _handleRightArrowTap,
+                        ),
+                        Capsule(
+                          key: _dateListKey,
+                          startDate: _focusedDay,
+                          days: _daysToDisplay,
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
 
-                      HomeSection(cycleDataList: cycledata),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Text(
-                        "Upcoming Remainders",
-                        style: AppTypography.kSemiBold16
-                            .copyWith(color: AppColors.kWhite),
-                        textAlign: TextAlign.right,
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      const RemainderCard(),
-                      SizedBox(
-                        height: 24.h,
-                      ),
-                      Text(
-                        "Quick Links",
-                        style: AppTypography.kSemiBold16
-                            .copyWith(color: AppColors.kWhite),
-                        textAlign: TextAlign.right,
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      QuickLinkCard(quicklickcard: quicklink)
-                      //UpcomingReminders(),
-                      //QuickLinks(),
-                    ],
+                        HomeSection(cycleDataList: cycledata),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Text(
+                          "Upcoming Remainders",
+                          style: AppTypography.kSemiBold16
+                              .copyWith(color: AppColors.kWhite),
+                          textAlign: TextAlign.right,
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        const RemainderCard(),
+                        SizedBox(
+                          height: 24.h,
+                        ),
+                        Text(
+                          "Quick Links",
+                          style: AppTypography.kSemiBold16
+                              .copyWith(color: AppColors.kWhite),
+                          textAlign: TextAlign.right,
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        QuickLinkCard(quicklickcard: quicklink),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+
+                        //UpcomingReminders(),
+                        //QuickLinks(),
+                      ],
+                    ),
                   ),
                 ),
               ),

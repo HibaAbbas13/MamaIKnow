@@ -5,7 +5,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Providers/PeriodTracker.dart';
-import 'package:mamaiknow/Screens/HomeScreen/HomeScreen.dart';
+import 'package:mamaiknow/Screens/LandingPgae.dart';
 
 import 'package:provider/provider.dart';
 
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
                         AppBarTheme(backgroundColor: AppColors.kWhite)),
                 scrollBehavior:
                     const ScrollBehavior().copyWith(overscroll: false),
-                home: HomeScreen(),
+                home: const LandingPage(),
               ),
             );
           },

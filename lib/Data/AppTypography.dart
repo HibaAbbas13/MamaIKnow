@@ -67,6 +67,8 @@ class AppTypography {
   // Bold (700)
   static TextStyle kBold14 =
       _sfProDisplay(fontSize: 14, fontWeight: FontWeight.w700);
+  static TextStyle kBold24 =
+      _sfProDisplay(fontSize: 24, fontWeight: FontWeight.w700);
   static TextStyle kBold16 =
       _sfProDisplay(fontSize: 16, fontWeight: FontWeight.w700);
   static TextStyle kBold18 =
