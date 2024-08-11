@@ -3,16 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
-import 'package:mamaiknow/Data/AppIcons.dart';
+
 import 'package:mamaiknow/Data/AppTypography.dart';
 
 class CircularTracker extends StatelessWidget {
   final DateTime currentDate;
-
   final int periodDay;
   final String svgPath;
 
-  CircularTracker({
+  const CircularTracker({
     Key? key,
     required this.currentDate,
     required this.periodDay,
@@ -21,29 +20,25 @@ class CircularTracker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String day = DateFormat('EEEE').format(currentDate); // Day of the week
-    String month = DateFormat('MMMM').format(currentDate); // Full month name
-    String year = DateFormat('y').format(currentDate); // Year
-    String date = DateFormat('d').format(currentDate); // Date
+    String day = DateFormat('EEEE').format(currentDate);
+    String month = DateFormat('MMMM').format(currentDate);
+    String year = DateFormat('y').format(currentDate);
+    String date = DateFormat('d').format(currentDate);
 
     return Container(
-      width: 240.w, // Adjust width and height as needed
+      width: 240.w,
       height: 240.h,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: AppColors.kGrey900, // Semi-transparent black background
+        color: AppColors.kGrey900,
         border: Border.all(
           width: 4.w,
-          color: AppColors.kpink500, // Border is transparent to use gradient
+          color: AppColors.kpink500,
         ),
-
         boxShadow: [
           BoxShadow(
-            color: Color(
-              0xFFFF1B5F,
-            ).withOpacity(0.90),
+            color: Color(0xFFFF1B5F).withOpacity(0.90),
             blurRadius: 50.r,
-            // offset: Offset(15, 25),
           ),
         ],
       ),
@@ -82,7 +77,7 @@ class CircularTracker extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(11.4),
               child: SvgPicture.asset(
-                AppIcons.guideline,
+                svgPath,
                 color: AppColors.kWhite,
                 width: 24.w,
                 height: 24.h,

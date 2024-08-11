@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
-
-import 'package:mamaiknow/Screens/Components/CustomAppBar.dart';
 import 'package:mamaiknow/Screens/Trackers/Components/TrackerCard.dart';
 import 'package:mamaiknow/models/TrackerModels.dart';
 
-// ignore: must_be_immutable
+
 class TrackerScreen extends StatefulWidget {
   const TrackerScreen({super.key});
 
@@ -35,8 +33,7 @@ class _TrackerScreenState extends State<TrackerScreen> {
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               title: Text('Trackers',
-                  style:
-                      AppTypography.kBold24.copyWith(color: AppColors.kWhite)),
+                  style: AppTypography.kBold24.copyWith(color: AppColors.kWhite)),
               centerTitle: false,
             ),
             body: SafeArea(

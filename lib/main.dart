@@ -3,20 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:mamaiknow/Controllers/TrackerCard.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
-import 'package:mamaiknow/Providers/Logging.dart';
-import 'package:mamaiknow/Providers/PeriodTracker.dart';
-import 'package:mamaiknow/Screens/LandingPgae.dart';
+import 'package:mamaiknow/Controllers/Logging.dart';
+import 'package:mamaiknow/Controllers/PeriodTracker.dart';
 
-import 'package:provider/provider.dart';
+import 'package:mamaiknow/Screens/LandingPgae.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   SystemChrome.setSystemUIOverlayStyle(AppColors.defaultOverlay);
-  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   FlutterNativeSplash.remove();
+
+  // Initialize GetX Controllers
+  Get.put(PeriodTrackerController());
+  Get.put(LoggingController());
+   Get.put(TrackerCardController()); 
+
   runApp(const MyApp());
 }
 
@@ -25,34 +31,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => PeriodTrackerProvider()),
-           ChangeNotifierProvider(create: (_) => LoggingProvider()),
-        ],
-        child: ScreenUtilInit(
-          designSize: const Size(375, 812),
-          useInheritedMediaQuery: true,
-          builder: (context, child) {
-            return GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {
-                FocusManager.instance.primaryFocus?.unfocus();
-              },
-              child: MaterialApp(
-                title: 'MamaIKnow',
-                debugShowCheckedModeBanner: false,
-                theme: ThemeData(
-                    primaryColor: AppColors.kRed,
-                    scaffoldBackgroundColor: AppColors.kWhite,
-                    appBarTheme:
-                        AppBarTheme(backgroundColor: AppColors.kWhite)),
-                scrollBehavior:
-                    const ScrollBehavior().copyWith(overscroll: false),
-                home: const LandingPage(),
-              ),
-            );
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      useInheritedMediaQuery: true,
+      builder: (context, child) {
+        return GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
           },
-        ));
+          child: GetMaterialApp(
+            title: 'MamaIKnow',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primaryColor: AppColors.kRed,
+              scaffoldBackgroundColor: AppColors.kWhite,
+              appBarTheme: AppBarTheme(backgroundColor: AppColors.kWhite),
+            ),
+            scrollBehavior: const ScrollBehavior().copyWith(overscroll: false),
+            home: const LandingPage(),
+          ),
+        );
+      },
+    );
   }
 }

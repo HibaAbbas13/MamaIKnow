@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SymptomLoggingWidget extends StatelessWidget {
@@ -7,7 +6,8 @@ class SymptomLoggingWidget extends StatelessWidget {
   final ValueChanged<String?> onSymptomChanged;
   final ValueChanged<int> onSeverityChanged;
 
-   const SymptomLoggingWidget({super.key, 
+  const SymptomLoggingWidget({
+    super.key,
     required this.selectedSymptom,
     required this.selectedSeverity,
     required this.onSymptomChanged,
@@ -35,8 +35,7 @@ class SymptomLoggingWidget extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 4),
                 padding: EdgeInsets.all(8),
-                color:
-                    index + 1 == selectedSeverity ? Colors.green : Colors.grey,
+                color: index + 1 == selectedSeverity ? Colors.green : Colors.grey,
                 child: Text((index + 1).toString()),
               ),
             );

@@ -1,50 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mamaiknow/Controllers/PeriodTracker.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppIcons.dart';
-import 'package:mamaiknow/Providers/PeriodTracker.dart';
-
+ 
 import 'package:mamaiknow/Screens/Components/CustomAppBar.dart';
 import 'package:mamaiknow/Screens/PinkHomePage/Components/CircularTracker.dart';
-
 import 'package:mamaiknow/Screens/HomeScreen/Components/CustomHeader.dart';
 import 'package:mamaiknow/Screens/HomeScreen/Components/Capsule.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart'; // Updated import
 
-class PinkHomePage extends StatefulWidget {
+class PinkHomePage extends StatelessWidget {
   final String userId;
+
   const PinkHomePage({super.key, required this.userId});
 
   @override
-  State<PinkHomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<PinkHomePage> {
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<PeriodTrackerProvider>(context, listen: false)
-        .fetchUserData(widget.userId);
-  }
-
-  final DateTime _focusedDay = DateTime.now();
-  final int _daysToDisplay = 30;
-  //final int _periodDay = 4;
-  final GlobalKey<HorizontalDateListState> _dateListKey = GlobalKey();
-
-  void _handleLeftArrowTap() {
-    _dateListKey.currentState?.scrollLeft();
-  }
-
-  void _handleRightArrowTap() {
-    _dateListKey.currentState?.scrollRight();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<PeriodTrackerProvider>(context);
-    DateTime currentDate = DateTime.now();
-    int periodDay = provider.calculatePeriodDay();
+    final PeriodTrackerController2 controller = Get.put(PeriodTrackerController2());
+
+    // Fetch user data on initialization
+    controller.updateCurrentDate(DateTime.now()); // Replace with actual fetch logic
+
+    void _handleLeftArrowTap() {
+      // Logic to scroll left
+    }
+
+    void _handleRightArrowTap() {
+      // Logic to scroll right
+    }
+
     return Scaffold(
       backgroundColor: AppColors.kGrey01,
       appBar: CustomAppBar(
@@ -71,22 +56,22 @@ class _HomePageState extends State<PinkHomePage> {
             child: Column(
               children: [
                 CustomCalendarHeader(
-                  focusedDay: _focusedDay,
+                  focusedDay: controller.currentDate.value,
                   onLeftArrowTap: _handleLeftArrowTap,
                   onRightArrowTap: _handleRightArrowTap,
                 ),
                 Capsule(
-                  key: _dateListKey,
-                  startDate: _focusedDay,
-                  days: _daysToDisplay,
+                  startDate: controller.currentDate.value,
+                  days: 30, // You can replace this with dynamic value
                 ),
                 SizedBox(height: 40.h),
-                CircularTracker(
-                  currentDate: currentDate,
-                  periodDay: periodDay,
-                  svgPath:
-                      AppIcons.guideline, // Replace with your SVG asset path
-                ),
+                Obx(() {
+                  return CircularTracker(
+                    currentDate: controller.currentDate.value,
+                    periodDay: controller.periodDay.value,
+                    svgPath: AppIcons.guideline,
+                  );
+                }),
               ],
             ),
           ),

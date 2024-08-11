@@ -1,52 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:mamaiknow/Controllers/Landing.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppIcons.dart';
 import 'package:mamaiknow/Screens/HomeScreen/HomeScreen.dart';
-
 import 'package:mamaiknow/Screens/Trackers/TrackerScreen.dart';
 
-class LandingPage extends StatefulWidget {
-  const LandingPage({
-    super.key,
-  });
 
-  @override
-  State<LandingPage> createState() => _LandingPageState();
-}
+class LandingPage extends StatelessWidget {
+  const LandingPage({super.key});
 
-class _LandingPageState extends State<LandingPage> {
-  int _currentIndex = 0;
-  bool isSelected = false;
-
-  List<Widget> pages = [
-    HomeScreen(),
-    TrackerScreen(),
-    Container(),
-    Container(),
-    Container(),
-  ];
   @override
   Widget build(BuildContext context) {
+    // Initialize the controller using Get.put()
+    final LandingPageController controller = Get.put(LandingPageController());
+
+    // List of pages
+    List<Widget> pages = [
+      HomeScreen(),
+      TrackerScreen(),
+      Container(),
+      Container(),
+      Container(),
+    ];
+
     return Scaffold(
       extendBody: true,
-      body: pages[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
+      body: Obx(() => pages[controller.currentIndex.value]),
+      bottomNavigationBar: Obx(() => BottomNavigationBar(
         backgroundColor: AppColors.kGrey02,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: AppColors.klime,
         unselectedItemColor: AppColors.kblueGrey,
-        currentIndex: _currentIndex,
+        currentIndex: controller.currentIndex.value,
         onTap: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
+          controller.changePage(index);
         },
         items: [
           BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(
-              AppIcons.home,
-            ),
+            activeIcon: SvgPicture.asset(AppIcons.home),
             icon: SvgPicture.asset(AppIcons.home, color: AppColors.kblueGrey),
             label: 'Home',
           ),
@@ -65,18 +58,16 @@ class _LandingPageState extends State<LandingPage> {
               AppIcons.guideline,
               color: AppColors.klime,
             ),
-            icon: SvgPicture.asset(AppIcons.guideline,
-                color: AppColors.kblueGrey),
+            icon: SvgPicture.asset(AppIcons.guideline, color: AppColors.kblueGrey),
             label: 'Guides',
           ),
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset(AppIcons.profile),
-            icon:
-                SvgPicture.asset(AppIcons.profile, color: AppColors.kblueGrey),
+            icon: SvgPicture.asset(AppIcons.profile, color: AppColors.kblueGrey),
             label: 'Profile',
           ),
         ],
-      ),
+      )),
     );
   }
 }

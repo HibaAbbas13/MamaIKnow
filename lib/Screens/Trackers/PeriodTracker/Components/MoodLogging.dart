@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class MoodLoggingWidget extends StatelessWidget {
@@ -6,7 +5,8 @@ class MoodLoggingWidget extends StatelessWidget {
   final TextEditingController notesController;
   final ValueChanged<String?> onMoodChanged;
 
-  MoodLoggingWidget({
+  const MoodLoggingWidget({
+    super.key,
     required this.selectedMood,
     required this.notesController,
     required this.onMoodChanged,
