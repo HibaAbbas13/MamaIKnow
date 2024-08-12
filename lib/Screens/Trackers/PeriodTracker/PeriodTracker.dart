@@ -4,12 +4,12 @@ import 'package:mamaiknow/Screens/Trackers/PeriodTracker/Components/Calender.dar
 import 'package:mamaiknow/Screens/Trackers/PeriodTracker/Components/MoodLogging.dart';
 import 'package:mamaiknow/Screens/Trackers/PeriodTracker/Components/SymptomLogging.dart';
 import 'package:mamaiknow/models/LoggingModel.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
-
 class PeriodTrackerScreen extends StatefulWidget {
+  const PeriodTrackerScreen({super.key});
+
   @override
   _PeriodTrackerScreenState createState() => _PeriodTrackerScreenState();
 }

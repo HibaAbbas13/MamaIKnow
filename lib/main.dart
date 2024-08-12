@@ -10,6 +10,7 @@ import 'package:mamaiknow/Controllers/Logging.dart';
 import 'package:mamaiknow/Controllers/PeriodTracker.dart';
 
 import 'package:mamaiknow/Screens/LandingPgae.dart';
+import 'package:mamaiknow/Screens/Onbording/Onbordingscreen.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,7 @@ void main() async {
   // Initialize GetX Controllers
   Get.put(PeriodTrackerController());
   Get.put(LoggingController());
-   Get.put(TrackerCardController()); 
+  Get.put(TrackerCardController());
 
   runApp(const MyApp());
 }
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
               appBarTheme: AppBarTheme(backgroundColor: AppColors.kWhite),
             ),
             scrollBehavior: const ScrollBehavior().copyWith(overscroll: false),
-            home: const LandingPage(),
+            home: const OnBoardingScreen(),
           ),
         );
       },
