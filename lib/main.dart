@@ -4,13 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:mamaiknow/Controllers/Home.dart';
 import 'package:mamaiknow/Controllers/TrackerCard.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Controllers/Logging.dart';
 import 'package:mamaiknow/Controllers/PeriodTracker.dart';
-
-import 'package:mamaiknow/Screens/LandingPgae.dart';
-import 'package:mamaiknow/Screens/Onbording/Onbordingscreen.dart';
+import 'package:mamaiknow/Screens/OnBorading/onboarding_view.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +22,7 @@ void main() async {
   Get.put(PeriodTrackerController());
   Get.put(LoggingController());
   Get.put(TrackerCardController());
+  Get.put(HomeController());
 
   runApp(const MyApp());
 }
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812),
+      designSize: Size(400, 900),
       useInheritedMediaQuery: true,
       builder: (context, child) {
         return GestureDetector(
@@ -49,8 +49,8 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: AppColors.kWhite,
               appBarTheme: AppBarTheme(backgroundColor: AppColors.kWhite),
             ),
-            scrollBehavior: const ScrollBehavior().copyWith(overscroll: false),
-            home: const OnBoardingScreen(),
+            scrollBehavior: ScrollBehavior().copyWith(overscroll: false),
+            home: OnboardingView(),
           ),
         );
       },

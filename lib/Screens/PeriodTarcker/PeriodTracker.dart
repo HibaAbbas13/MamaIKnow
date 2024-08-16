@@ -1,7 +1,6 @@
 // period_tracker_provider.dart
-import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
+/*
 class PeriodTrackerProvider extends ChangeNotifier {
   DateTime _nextPeriodDate = DateTime.now();
   DateTime _lastPeriodDate = DateTime.now();
@@ -28,7 +27,8 @@ class PeriodTrackerProvider extends ChangeNotifier {
   }
 
   int calculatePeriodDay() {
-    int periodDay = _currentDate.difference(_lastPeriodDate).inDays % _cycleLength;
+    int periodDay =
+        _currentDate.difference(_lastPeriodDate).inDays % _cycleLength;
     return periodDay < 0 ? periodDay + _cycleLength : periodDay;
   }
 
@@ -40,12 +40,16 @@ class PeriodTrackerProvider extends ChangeNotifier {
 
   Future<void> fetchUserData(String userId) async {
     try {
-      DocumentSnapshot userDoc = await FirebaseFirestore.instance.collection('users').doc(userId).get();
+      DocumentSnapshot userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .get();
       if (userDoc.exists) {
         var data = userDoc.data() as Map<String, dynamic>;
         _cycleLength = data['cycleLength'] ?? _cycleLength;
         _periodDuration = data['periodDuration'] ?? _periodDuration;
-        DateTime lastPeriodDate = (data['lastPeriodDate'] as Timestamp).toDate();
+        DateTime lastPeriodDate =
+            (data['lastPeriodDate'] as Timestamp).toDate();
         updatePeriodData(
           lastPeriodDate: lastPeriodDate,
           cycleLength: _cycleLength,
@@ -62,3 +66,4 @@ class PeriodTrackerProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
+*/

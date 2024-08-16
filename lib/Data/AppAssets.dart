@@ -19,20 +19,18 @@ class AppAssets {
   static String kEasypaisa = "assets/images/easypaisa.png";
   static String kJazzcash = "assets/images/jazzcash.png";
 
-  
-   static String splash = "assets/images/logo.png";
-  static String onboarding1 = "assets/images/on1.png";
-  static String onboarding2 = "assets/images/on3.png";
-  static String onboarding3 = "assets/images/on4.png";
+  static String splash = "assets/images/logo.png";
+  static String onboarding1 = "assets/images/onboard1.png";
+  static String onboarding2 = "assets/images/onboard2.png";
+  static String onboarding3 = "assets/images/onboard3.png";
   static String onboarding4 = "assets/images/on5.png";
   static String registraion = "assets/images/Registration.png";
   static String google = "assets/images/Google.png";
   static String fb = "assets/images/Facebook.png";
   static String kFounder = "assets/images/founder.png";
 
- // svg
+  // svg
   static String kEducation = 'assets/icons/education.svg';
-  
-  static String kWhatsapp = "assets/images/whatsapp.svg";
 
+  static String kWhatsapp = "assets/images/whatsapp.svg";
 }

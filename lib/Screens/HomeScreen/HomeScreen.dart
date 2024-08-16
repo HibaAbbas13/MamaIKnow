@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:mamaiknow/Controllers/Home.dart';
+
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
 import 'package:mamaiknow/Screens/Components/CustomAppBar.dart';
+import 'package:mamaiknow/Screens/HomeScreen/Components/Capsule.dart';
 import 'package:mamaiknow/Screens/HomeScreen/Components/CustomHeader.dart';
 import 'package:mamaiknow/Screens/HomeScreen/Components/HomeSection.dart';
-import 'package:mamaiknow/Screens/HomeScreen/Components/Capsule.dart';
 import 'package:mamaiknow/Screens/HomeScreen/Components/QuickLinkCard.dart';
 import 'package:mamaiknow/Screens/HomeScreen/Components/RemainderCard.dart';
-import 'package:mamaiknow/models/HomeModel.dart';
-import 'package:mamaiknow/models/QuickLinksModel.dart';
 
-// ignore: must_be_immutable
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final DateTime _focusedDay = DateTime.now();
   final int _daysToDisplay = 30;
   final GlobalKey<HorizontalDateListState> _dateListKey = GlobalKey();
 
-  HomeScreen({super.key});
+  // Initialize the controller
+  final HomeController _homeController = Get.put(HomeController());
 
   void _handleLeftArrowTap() {
     _dateListKey.currentState?.scrollLeft();
@@ -82,7 +90,10 @@ class HomeScreen extends StatelessWidget {
                           height: 20.h,
                         ),
 
-                        HomeSection(cycleDataList: cycledata),
+                        // Convert RxList to List using toList()
+                        Obx(() => HomeSection(
+                            cycleDataList:
+                                _homeController.cycleDataList.toList())),
                         SizedBox(
                           height: 20.h,
                         ),
@@ -108,13 +119,14 @@ class HomeScreen extends StatelessWidget {
                         SizedBox(
                           height: 20.h,
                         ),
-                        QuickLinkCard(quicklickcard: quicklink),
+
+                        // Convert RxList to List using toList()
+                        Obx(() => QuickLinkCard(
+                            quicklickcard:
+                                _homeController.quicklinkCardList.toList())),
                         SizedBox(
                           height: 20.h,
                         ),
-
-                        //UpcomingReminders(),
-                        //QuickLinks(),
                       ],
                     ),
                   ),

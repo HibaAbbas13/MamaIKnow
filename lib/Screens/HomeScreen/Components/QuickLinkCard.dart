@@ -5,7 +5,7 @@ import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:mamaiknow/models/QuickLinksModel.dart';
+import 'package:mamaiknow/Models/QuickLinksModel.dart';
 
 class QuickLinkCard extends StatefulWidget {
   final List<QuicklinkData> quicklickcard;
