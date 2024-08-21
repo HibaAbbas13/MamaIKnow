@@ -11,8 +11,7 @@ import 'package:mamaiknow/Controllers/TrackerCard_Controller.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Controllers/Logging_Controller.dart';
 import 'package:mamaiknow/Controllers/PeriodTracker_Controller.dart';
-import 'package:mamaiknow/Screens/Auth/SignupScreen.dart';
-import 'package:mamaiknow/Screens/Status/StatusScreen.dart';
+import 'package:mamaiknow/Screens/Auth/SignInScreen.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -48,16 +47,16 @@ class MyApp extends StatelessWidget {
             FocusManager.instance.primaryFocus?.unfocus();
           },
           child: GetMaterialApp(
-            title: 'MamaIKnow',
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              primaryColor: AppColors.kRed,
-              scaffoldBackgroundColor: AppColors.kWhite,
-              appBarTheme: AppBarTheme(backgroundColor: AppColors.kWhite),
-            ),
-            scrollBehavior: ScrollBehavior().copyWith(overscroll: false),
-            home: SignUpScreen(),
-          ),
+              title: 'MamaIKnow',
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                primaryColor: AppColors.kRed,
+                scaffoldBackgroundColor: AppColors.kWhite,
+                appBarTheme: AppBarTheme(backgroundColor: AppColors.kWhite),
+              ),
+              scrollBehavior:
+                  const ScrollBehavior().copyWith(overscroll: false),
+              home: SignInScreen()),
         );
       },
     );

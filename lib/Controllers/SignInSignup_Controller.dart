@@ -33,10 +33,10 @@ class SignInController extends GetxController {
         final status = userData?['status'];
 
         if (status == null || status == 'Not Set') {
-          // Navigate to Statusscreen if status is not set
+        
           Get.to(() => const Statusscreen());
         } else {
-          // Navigate to the home screen if status is set
+        
           Get.to(() => HomeScreen());
         }
       } catch (e) {
@@ -90,7 +90,6 @@ class SignInController extends GetxController {
     }
   }
 }
-
 class SignUpController extends GetxController {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -99,6 +98,10 @@ class SignUpController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  String? selectedDay;
+  DateTime? selectedDate;
+  String? periodDuration;
+
   void signUp() async {
     if (formKey.currentState!.validate()) {
       final password = passwordController.text;
@@ -125,22 +128,21 @@ class SignUpController extends GetxController {
             'email': emailController.text,
             'password': passwordController.text,
             'status': 'Not Set', // Default status, to be updated later
+            'length_of_cycle': selectedDay,
+            'last_period_date': selectedDate?.toIso8601String(),
+            'period_duration': periodDuration,
           });
 
           // Navigate to Statusscreen
           Get.to(() => const Statusscreen());
         } catch (e) {
+          // Handle signup error
           Get.snackbar("Error", e.toString());
         }
       } else {
-        if (passwordValidation != null) {
-          passwordController.clear();
-          Get.snackbar("Error", passwordValidation);
-        }
-        if (confirmPasswordValidation != null) {
-          confirmPasswordController.clear();
-          Get.snackbar("Error", confirmPasswordValidation);
-        }
+        // Handle validation errors
+        Get.snackbar(
+            "Error", passwordValidation ?? confirmPasswordValidation ?? "");
       }
     }
   }

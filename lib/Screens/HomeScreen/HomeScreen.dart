@@ -5,7 +5,8 @@ import 'package:mamaiknow/Controllers/HomePage_Controller.dart';
 
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
-import 'package:mamaiknow/Screens/Components/CustomAppBar.dart';
+import 'package:mamaiknow/Screens/CommonWidgets/CustomAppBar.dart';
+
 import 'package:mamaiknow/Screens/HomeScreen/Components/Capsule.dart';
 import 'package:mamaiknow/Screens/HomeScreen/Components/CustomHeader.dart';
 import 'package:mamaiknow/Screens/HomeScreen/Components/HomeSection.dart';

@@ -4,9 +4,10 @@ import 'package:intl/intl.dart';
 class CalendarWidget extends StatefulWidget {
   final Function(DateTime) onDateChanged;
 
-  const CalendarWidget({required this.onDateChanged});
+  const CalendarWidget({super.key, required this.onDateChanged});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CalendarWidgetState createState() => _CalendarWidgetState();
 }
 
@@ -24,7 +25,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
     if (pickedDate != null && pickedDate != _selectedDate) {
       setState(() {
         _selectedDate = pickedDate;
-        _nextPeriodDate = pickedDate.add(Duration(days: 28)); // Typical cycle length
+        _nextPeriodDate =
+            pickedDate.add(Duration(days: 28)); // Typical cycle length
       });
       widget.onDateChanged(pickedDate);
     }
@@ -37,18 +39,18 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       children: [
         ElevatedButton(
           onPressed: () => _pickDate(context),
-          child: Text('Select Last Period Date'),
+          child: const Text('Select Last Period Date'),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         if (_selectedDate != null)
           Text(
             'Last Period Date: ${DateFormat.yMMMd().format(_selectedDate!)}',
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
         if (_nextPeriodDate != null)
           Text(
             'Next Estimated Period Date: ${DateFormat.yMMMd().format(_nextPeriodDate!)}',
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
       ],
     );

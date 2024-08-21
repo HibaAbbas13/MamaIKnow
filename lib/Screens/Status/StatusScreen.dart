@@ -1,15 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
-import 'package:mamaiknow/Screens/Components/CommonButton.dart';
-import 'package:mamaiknow/Screens/HomeScreen/HomeScreen.dart';
+import 'package:mamaiknow/Screens/CommonWidgets/CommonButton.dart';
+
 import 'package:mamaiknow/Screens/Status/Components/CheckBox.dart';
+import 'package:mamaiknow/Screens/Status/MarriedScreen.dart';
 
 class Statusscreen extends StatefulWidget {
   const Statusscreen({super.key});
@@ -34,9 +35,8 @@ class _StatusscreenState extends State<Statusscreen> {
 
   void onNext() async {
     if (selectedStatusIndex == null) {
-      // Handle case where no status is selected (show an error or message)
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please select a status')),
+        const SnackBar(content: Text('Please select a status')),
       );
       return;
     }
@@ -44,9 +44,7 @@ class _StatusscreenState extends State<Statusscreen> {
     String status = selectedStatusIndex == 0 ? "Married" : "UnMarried";
     saveToFirebase(status);
 
-    // Navigate to the home screen or the next screen
-    Get.to(
-        () => HomeScreen()); // Replace HomeScreen with your actual next screen
+    Get.to(() => const UnMarriedScreen());
   }
 
   @override

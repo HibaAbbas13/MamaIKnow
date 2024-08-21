@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:mamaiknow/Controllers/Authfiled_Controller.dart';
 import 'package:mamaiknow/Controllers/SignInSignup_Controller.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
-import 'package:mamaiknow/Data/AppIcons.dart';
+
 import 'package:mamaiknow/Data/AppTypography.dart';
 import 'package:mamaiknow/Screens/Auth/Components/Authfield.dart';
 import 'package:mamaiknow/Screens/Auth/Components/SignInButtons.dart';
 import 'package:mamaiknow/Screens/Auth/SignInScreen.dart';
 import 'package:get/get.dart';
-import 'package:mamaiknow/Screens/Components/CommonButton.dart';
+import 'package:mamaiknow/Screens/CommonWidgets/CommonButton.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

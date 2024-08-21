@@ -7,7 +7,7 @@ import 'package:mamaiknow/Data/AppTypography.dart';
 import 'package:mamaiknow/Screens/Auth/Components/Authfield.dart';
 import 'package:mamaiknow/Screens/Auth/Components/SignInButtons.dart';
 import 'package:mamaiknow/Screens/Auth/SignUpScreen.dart';
-import 'package:mamaiknow/Screens/Components/CommonButton.dart';
+import 'package:mamaiknow/Screens/CommonWidgets/CommonButton.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -101,18 +101,18 @@ class _SignInScreenState extends State<SignInScreen> {
                     Get.to(() => const SignUpScreen());
                     Get.delete<SignInController>();
                   },
-                  child: const Align(
+                  child: Align(
                     alignment: Alignment.center,
                     child: Text.rich(
                       TextSpan(
                         text: 'Dont have an account? ',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: AppColors.kWhite),
                         children: <InlineSpan>[
                           TextSpan(
                             text: 'Sign Up',
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color(0xFFD1FF1B)),
+                                color: AppColors.klime),
                           ),
                         ],
                       ),
