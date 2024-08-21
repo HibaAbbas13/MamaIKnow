@@ -4,12 +4,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mamaiknow/Controllers/Home.dart';
-import 'package:mamaiknow/Controllers/TrackerCard.dart';
+import 'package:mamaiknow/Controllers/Authfiled_Controller.dart';
+import 'package:mamaiknow/Controllers/HomePage_Controller.dart';
+import 'package:mamaiknow/Controllers/SignInSignup_Controller.dart';
+import 'package:mamaiknow/Controllers/TrackerCard_Controller.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
-import 'package:mamaiknow/Controllers/Logging.dart';
-import 'package:mamaiknow/Controllers/PeriodTracker.dart';
-import 'package:mamaiknow/Screens/OnBorading/onboarding_view.dart';
+import 'package:mamaiknow/Controllers/Logging_Controller.dart';
+import 'package:mamaiknow/Controllers/PeriodTracker_Controller.dart';
+import 'package:mamaiknow/Screens/Auth/SignupScreen.dart';
+import 'package:mamaiknow/Screens/Status/StatusScreen.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +26,9 @@ void main() async {
   Get.put(LoggingController());
   Get.put(TrackerCardController());
   Get.put(HomeController());
+  Get.put(AuthFieldController());
+  Get.put(SignUpController());
+  Get.put(SignInController());
 
   runApp(const MyApp());
 }
@@ -50,7 +56,7 @@ class MyApp extends StatelessWidget {
               appBarTheme: AppBarTheme(backgroundColor: AppColors.kWhite),
             ),
             scrollBehavior: ScrollBehavior().copyWith(overscroll: false),
-            home: OnboardingView(),
+            home: SignUpScreen(),
           ),
         );
       },

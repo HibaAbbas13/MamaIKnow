@@ -27,4 +27,6 @@ class AppIcons {
   static String vector = "assets/icons/Vector.svg";
   static String onboarding2 = "assets/icons/onboarding2.svg";
   static String onboarding3 = "assets/icons/onboarding3.svg";
+    static String google= "assets/icons/google.svg";
+      static String apple = "assets/icons/apple.svg";
 }

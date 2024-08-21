@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mamaiknow/Controllers/Home.dart';
+import 'package:mamaiknow/Controllers/HomePage_Controller.dart';
 
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';

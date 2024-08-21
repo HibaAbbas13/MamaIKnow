@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
 import 'package:mamaiknow/Screens/Components/CommonButton.dart';
@@ -10,7 +9,7 @@ class RemainderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: double.infinity,
         height: 164.h,
         child: ListView.separated(

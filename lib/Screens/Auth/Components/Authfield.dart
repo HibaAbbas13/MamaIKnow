@@ -1,75 +1,97 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:mamaiknow/Controllers/Authfiled_Controller.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
 import 'package:mamaiknow/Screens/Auth/Components/Validation.dart';
 
-
-class AuthField extends StatefulWidget {
+class AuthField extends StatelessWidget {
   final TextEditingController controller;
   final bool isPassword;
-  final bool confirmpass;
+  final bool isConfirmPassword;
   final String hintText;
   final String icon;
-  const AuthField({
-    super.key,
+  final String? password;
+
+  AuthField({
+    Key? key,
     required this.controller,
     this.isPassword = false,
+    this.isConfirmPassword = false,
     required this.hintText,
     required this.icon,
-    this.confirmpass = false,
-  });
+    this.password,
+  }) : super(key: key);
 
-  @override
-  State<AuthField> createState() => _AuthFieldState();
-}
-
-class _AuthFieldState extends State<AuthField> {
-  bool isObscure = true;
-
-  void _togglePasswordVisibility() {
-    setState(() {
-      isObscure = !isObscure;
-    });
-  }
+  final AuthFieldController _authFieldController =
+      Get.find<AuthFieldController>();
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-        controller: widget.controller,
-        obscureText: widget.isPassword ? isObscure : false,
-        validator: (value) {
-          if (widget.isPassword) {
-            return CustomValidator.validatePassword(value);
-          } else if (widget.confirmpass) {
-            return CustomValidator.confirmPassword(value);
-          } else {
-            return CustomValidator.validateUsername(value);
-          }
-        },
-        keyboardType: TextInputType.name,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 20),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(35.0.r),
-            borderSide: BorderSide(color: AppColors.kWhite, width: 1.0.w),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 8, bottom: 8),
+          child: TextFormField(
+            controller: controller,
+            obscureText: (isPassword || isConfirmPassword)
+                ? _authFieldController.isObscure.value
+                : false,
+            validator: (value) {
+              if (isPassword) {
+                return CustomValidator.validatePassword(value);
+              } else if (isConfirmPassword) {
+                return CustomValidator.validateConfirmPassword(
+                    value, password ?? '');
+              } else {
+                return CustomValidator.validateUsername(value);
+              }
+            },
+            keyboardType: TextInputType.name,
+            style: TextStyle(color: AppColors.kWhite),
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.only(left: 20.w),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12.0.r),
+                borderSide:
+                    BorderSide(color: AppColors.kblueGrey, width: 1.0.w),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12.0.r),
+                borderSide:
+                    BorderSide(color: AppColors.kblueGrey, width: 1.0.w),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12.0.r),
+                borderSide:
+                    BorderSide(color: AppColors.kblueGrey, width: 1.0.w),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12.0.r),
+                borderSide:
+                    BorderSide(color: AppColors.kblueGrey, width: 1.0.w),
+              ),
+              filled: true,
+              fillColor: AppColors.kblueGrey,
+              hintText: hintText,
+              hintStyle:
+                  AppTypography.kLight12.copyWith(color: AppColors.kWhite),
+              suffixIcon: (isPassword || isConfirmPassword)
+                  ? IconButton(
+                      icon: Icon(
+                        _authFieldController.isObscure.value
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                        color: AppColors.kWhite,
+                      ),
+                      onPressed: _authFieldController.toggleObscure,
+                    )
+                  : null,
+            ),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(35.0.r),
-            borderSide: BorderSide(color: AppColors.kWhite, width: 1.0.w),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(35.0.r),
-            borderSide: BorderSide(color: AppColors.kWhite, width: 1.0.w),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(35.0.r),
-            borderSide: BorderSide(color: AppColors.kWhite, width: 1.0.w),
-          ),
-          filled: true,
-          fillColor: AppColors.kWhite,
-          hintText: widget.hintText,
-          hintStyle: AppTypography.kLight12.copyWith(color: AppColors.kBlack),
-        ));
+        ),
+      ],
+    );
   }
 }

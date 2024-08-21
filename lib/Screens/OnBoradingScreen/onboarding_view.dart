@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mamaiknow/Controllers/OnBoarding.dart';
+import 'package:mamaiknow/Controllers/OnBoarding_Controller.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
 import 'package:mamaiknow/Models/OnbordingModel.dart';
-import 'package:mamaiknow/Screens/OnBorading/components/onbording_card.dart';
+import 'package:mamaiknow/Screens/Auth/SignInScreen.dart';
+import 'package:mamaiknow/Screens/Auth/SignupScreen.dart';
+import 'package:mamaiknow/Screens/OnBoradingScreen/components/onbording_card.dart';
 
-class OnboardingView extends StatelessWidget {
+class OnboardingView extends StatefulWidget {
   OnboardingView({super.key});
 
+  @override
+  State<OnboardingView> createState() => _OnboardingViewState();
+}
+
+class _OnboardingViewState extends State<OnboardingView> {
   final OnboardingController controller = Get.put(OnboardingController());
 
   @override
@@ -37,39 +44,51 @@ class OnboardingView extends StatelessWidget {
                       .hasSignUpSignInButtons
                   ? Column(
                       children: [
-                        Container(
-                          height: 50.h,
-                          width: 350.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100.r),
-                            color: AppColors.klime,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 36),
-                            child: Center(
-                              child: Text(
-                                "SignUp",
-                                style: AppTypography.kLight14
-                                    .copyWith(color: AppColors.kBlack),
+                        InkWell(
+                          onTap: () {
+                            Get.to(() => SignUpScreen());
+                          },
+                          child: Container(
+                            height: 50.h,
+                            width: 350.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100.r),
+                              color: AppColors.klime,
+                            ),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 36),
+                              child: Center(
+                                child: Text(
+                                  "SignUp",
+                                  style: AppTypography.kLight14
+                                      .copyWith(color: AppColors.kBlack),
+                                ),
                               ),
                             ),
                           ),
                         ),
                         SizedBox(height: 12.h),
-                        Container(
-                          height: 50.h,
-                          width: 350.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100.r),
-                            color: AppColors.kGrey01,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 36),
-                            child: Center(
-                              child: Text(
-                                "SignIn",
-                                style: AppTypography.kLight14
-                                    .copyWith(color: AppColors.kWhite),
+                        InkWell(
+                          onTap: () {
+                            Get.to(() => SignInScreen());
+                          },
+                          child: Container(
+                            height: 50.h,
+                            width: 350.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100.r),
+                              color: AppColors.kGrey01,
+                            ),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 36),
+                              child: Center(
+                                child: Text(
+                                  "SignIn",
+                                  style: AppTypography.kLight14
+                                      .copyWith(color: AppColors.kWhite),
+                                ),
                               ),
                             ),
                           ),

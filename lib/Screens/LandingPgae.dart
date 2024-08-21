@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:mamaiknow/Controllers/Landing.dart';
+import 'package:mamaiknow/Controllers/LandingPage_Comtroller.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppIcons.dart';
 import 'package:mamaiknow/Screens/HomeScreen/HomeScreen.dart';
 import 'package:mamaiknow/Screens/Trackers/TrackerScreen.dart';
-
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -19,7 +18,7 @@ class LandingPage extends StatelessWidget {
     // List of pages
     List<Widget> pages = [
       HomeScreen(),
-      TrackerScreen(),
+      const TrackerScreen(),
       Container(),
       Container(),
       Container(),
@@ -29,45 +28,53 @@ class LandingPage extends StatelessWidget {
       extendBody: true,
       body: Obx(() => pages[controller.currentIndex.value]),
       bottomNavigationBar: Obx(() => BottomNavigationBar(
-        backgroundColor: AppColors.kGrey02,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: AppColors.klime,
-        unselectedItemColor: AppColors.kblueGrey,
-        currentIndex: controller.currentIndex.value,
-        onTap: (int index) {
-          controller.changePage(index);
-        },
-        items: [
-          BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(AppIcons.home),
-            icon: SvgPicture.asset(AppIcons.home, color: AppColors.kblueGrey),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(AppIcons.vector),
-            icon: SvgPicture.asset(AppIcons.vector, color: AppColors.kblueGrey),
-            label: 'Trackers',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(AppIcons.turing),
-            icon: SvgPicture.asset(AppIcons.turing, color: AppColors.kblueGrey),
-            label: 'Community',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(
-              AppIcons.guideline,
-              color: AppColors.klime,
-            ),
-            icon: SvgPicture.asset(AppIcons.guideline, color: AppColors.kblueGrey),
-            label: 'Guides',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(AppIcons.profile),
-            icon: SvgPicture.asset(AppIcons.profile, color: AppColors.kblueGrey),
-            label: 'Profile',
-          ),
-        ],
-      )),
+            backgroundColor: AppColors.kGrey02,
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: AppColors.klime,
+            unselectedItemColor: AppColors.kblueGrey,
+            currentIndex: controller.currentIndex.value,
+            onTap: (int index) {
+              controller.changePage(index);
+            },
+            items: [
+              BottomNavigationBarItem(
+                activeIcon: SvgPicture.asset(AppIcons.home),
+                icon:
+                    SvgPicture.asset(AppIcons.home, color: AppColors.kblueGrey),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                activeIcon: SvgPicture.asset(AppIcons.vector),
+                icon: SvgPicture.asset(AppIcons.vector,
+                    color: AppColors.kblueGrey),
+                label: 'Trackers',
+              ),
+              BottomNavigationBarItem(
+                activeIcon: SvgPicture.asset(AppIcons.turing),
+                icon: SvgPicture.asset(AppIcons.turing,
+                    color: AppColors.kblueGrey),
+                label: 'Community',
+              ),
+              BottomNavigationBarItem(
+                activeIcon: SvgPicture.asset(
+                  AppIcons.guideline,
+                  // ignore: deprecated_member_use
+                  color: AppColors.klime,
+                ),
+                icon: SvgPicture.asset(AppIcons.guideline,
+                
+                    color: AppColors.kblueGrey),
+                label: 'Guides',
+              ),
+              BottomNavigationBarItem(
+                activeIcon: SvgPicture.asset(AppIcons.profile),
+                icon: SvgPicture.asset(AppIcons.profile,
+               
+                    color: AppColors.kblueGrey),
+                label: 'Profile',
+              ),
+            ],
+          )),
     );
   }
 }
