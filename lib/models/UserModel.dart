@@ -1,34 +1,46 @@
 // user_model.dart
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
 
 class UserModel {
-  final String email;
-  final DateTime lastPeriodDate;
-  final int cycleLength;
-  final int periodDuration;
+  String id;
+  String email;
+  String? name;
+  DateTime? lastPeriodDate;
+  int? cycleLength;
+  int? periodDuration;
 
   UserModel({
+    required this.id,
     required this.email,
     required this.lastPeriodDate,
     required this.cycleLength,
     required this.periodDuration,
+    required String name,
   });
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'email': email,
+      'name': name,
       'last_period_date': lastPeriodDate,
       'cycle_length': cycleLength,
       'period_duration': periodDuration,
     };
   }
 
-  factory UserModel.fromDocument(DocumentSnapshot doc) {
+  factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      email: doc['email'],
-      lastPeriodDate: (doc['last_period_date'] as Timestamp).toDate(),
-      cycleLength: doc['cycle_length'],
-      periodDuration: doc['period_duration'],
+      id: map['id'],
+      name: map['name'],
+      email: map['email'],
+      lastPeriodDate: map['last_period_date'],
+      cycleLength: map['cycle_length'],
+      periodDuration: map['period_duration'],
     );
   }
+
+  String toJson() => jsonEncode(toMap());
+  factory UserModel.fromJson(String source) =>
+      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

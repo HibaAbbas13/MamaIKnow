@@ -23,7 +23,11 @@ class AppAssets {
   static String onboarding1 = "assets/images/onboard1.png";
   static String onboarding2 = "assets/images/onboard2.png";
   static String onboarding3 = "assets/images/onboard3.png";
-  static String onboarding4 = "assets/images/on5.png";
+  static String onboarding4 = "assets/images/onboarding4.jpeg";
+  static String onboarding5 = "assets/images/onboarding5.jpeg";
+  static String onboarding6 = "assets/images/onboarding6.jpeg";
+  static String onboarding7 = "assets/images/onbaording7.jpeg";
+  static String onboarding8 = "assets/images/onbaording8.jpeg";
   static String registraion = "assets/images/Registration.png";
   static String google = "assets/images/Google.png";
   static String fb = "assets/images/Facebook.png";

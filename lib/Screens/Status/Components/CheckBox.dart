@@ -14,9 +14,9 @@ class CheckTab extends StatelessWidget {
     required this.title,
     required this.isChecked,
     required this.onChanged,
-    this.checkedColor = const Color(0xFFD1FF1B), // Default color when checked
+    this.checkedColor = const Color(0XFFCA7CD8), // Default color when checked
     this.uncheckedColor =
-        const Color(0xFF2f2f2f), // Default color when unchecked
+        const Color(0XFFF4E5F7), // Default color when unchecked
     this.shape = const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(12.0)),
     ),
@@ -26,28 +26,59 @@ class CheckTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: ShapeDecoration(
-        color: isChecked
-            ? checkedColor
-            : uncheckedColor, // Color changes based on isChecked
+        color: isChecked ? checkedColor : uncheckedColor,
         shape: shape,
+        shadows: [
+          BoxShadow(
+            color: isChecked
+                ? checkedColor.withOpacity(0.5)
+                : uncheckedColor.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 4,
+            offset: Offset(0, 2),
+          ),
+        ],
       ),
-      child: ListTile(
-        leading: Text(
-          title,
-          style: TextStyle(
-            color: isChecked ? Colors.black : Colors.white,
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: isChecked ? checkedColor.darker() : uncheckedColor.darker(),
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: ListTile(
+          leading: Text(
+            title,
+            style: TextStyle(
+              color: isChecked ? AppColors.kSecondary : AppColors.kPrimary,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          trailing: Checkbox(
+            value: isChecked,
+            fillColor: MaterialStateProperty.all(
+                isChecked ? uncheckedColor : checkedColor),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            onChanged: onChanged,
+            activeColor: AppColors.kSecondary,
+            checkColor: isChecked ? checkedColor : uncheckedColor,
           ),
         ),
-        trailing: Checkbox(
-          value: isChecked,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0), // Custom shape
-          ),
-          onChanged: onChanged,
-          activeColor: AppColors.kblueGrey,
-          checkColor: isChecked ? checkedColor : uncheckedColor,
-        ),
       ),
+    );
+  }
+}
+
+extension ColorExtension on Color {
+  Color darker() {
+    return Color.fromARGB(
+      alpha,
+      (red * 0.8).round(),
+      (green * 0.8).round(),
+      (blue * 0.8).round(),
     );
   }
 }

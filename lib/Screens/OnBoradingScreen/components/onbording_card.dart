@@ -1,37 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
-import 'package:mamaiknow/Models/OnbordingModel.dart';
+import 'package:mamaiknow/models/OnbordingModel.dart';
+// ignore: depend_on_referenced_packages
+import 'package:dots_indicator/dots_indicator.dart';
 
-class OnBoardingCard extends StatefulWidget {
-  final OnboardingModel onboarding;
-  const OnBoardingCard({super.key, required this.onboarding});
+// ignore: must_be_immutable
+class OnboardingCard extends StatelessWidget {
+  final List<OnboardingModel> onBoardingList;
+  final int currentIndex;
+  PageController pageController;
 
-  @override
-  State<OnBoardingCard> createState() => _OnBoardingCardState();
-}
+  OnboardingCard({
+    super.key,
+    required this.onBoardingList,
+    required this.currentIndex,
+    required this.pageController,
+  });
 
-class _OnBoardingCardState extends State<OnBoardingCard> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: double.infinity,
+    return Container(
+        decoration: BoxDecoration(
+            color: AppColors.kGrey3Color,
+            borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(25), topLeft: Radius.circular(25))),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 50, left: 35, right: 34),
+              child: Text(
+                pageViewList[currentIndex].title,
+                textAlign: TextAlign.center,
+                style: AppTypography.kBold24
+                    .copyWith(color: AppColors.kLightAccentColor),
+              ),
+            ),
             Text(
-              widget.onboarding.title,
-              style:
-                  AppTypography.kExtraLight12.copyWith(color: AppColors.kWhite),
+              pageViewList[currentIndex].subtitle,
               textAlign: TextAlign.center,
+              style: AppTypography.kSemiBold14
+                  .copyWith(color: AppColors.kLightAccentColor),
             ),
-            SizedBox(height: 20.h),
-            Text(
-              widget.onboarding.subtitle,
-              style: AppTypography.kSemiBold20.copyWith(color: AppColors.klime),
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: DotsIndicator(
+                dotsCount: onBoardingList.length,
+                position: currentIndex.toDouble(),
+                decorator: DotsDecorator(
+                  color: Colors.grey.withOpacity(0.5),
+                  size: const Size.square(8.0),
+                  activeSize: const Size(20.0, 8.0),
+                  activeShape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  activeColor: AppColors.kPrimary,
+                ),
+              ),
             ),
-            Expanded(child: Image.asset(widget.onboarding.image)),
           ],
         ));
   }

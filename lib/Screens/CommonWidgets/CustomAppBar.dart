@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
-import 'package:mamaiknow/Data/AppIcons.dart';
+
 import 'package:mamaiknow/Data/AppTypography.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -22,40 +21,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor:
-          Colors.transparent, // Use theme color for the app bar background
+          AppColors.kSecondary, // Use theme color for the app bar background
 
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
-            style: AppTypography.kSemiBold12.copyWith(color: AppColors.kWhite),
+            style:
+                AppTypography.kSemiBold12.copyWith(color: AppColors.kPrimary),
           ),
           Text(
             subtitle,
-            style: AppTypography.kSemiBold20.copyWith(color: AppColors.kWhite),
+            style:
+                AppTypography.kSemiBold20.copyWith(color: AppColors.kPrimary),
           ),
         ],
       ),
-      actions: [
-        IconButton(
-          icon: Container(
-            width: 40.0,
-            height: 40.0,
-            decoration: BoxDecoration(
-                color: circleColor, // Background color for visibility
-                shape: BoxShape.circle),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset(
-                AppIcons.notification,
-                color: AppColors.kBlack,
-              ),
-            ),
-          ),
-          onPressed: onNotificationIconPressed,
-        ),
-      ],
     );
   }
 

@@ -38,6 +38,7 @@ class CommomButton extends StatelessWidget {
               child: Center(
                   child: SvgPicture.asset(
                 icon,
+                height: 20.h,
                 color: color2,
               )),
             )));
@@ -58,6 +59,7 @@ class CommomButton2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return InkWell(
         onTap: onTap,
         child: Container(
@@ -65,15 +67,15 @@ class CommomButton2 extends StatelessWidget {
             width: 350.w,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100.r),
-                color: AppColors.klime),
+                color: colorScheme.primary),
             child: Padding(
               padding: const EdgeInsets.only(
                   top: 8.0, bottom: 8.0, left: 36, right: 36),
               child: Center(
                   child: Text(
                 text,
-                style:
-                    AppTypography.kSemiBold14.copyWith(color: AppColors.kBlack),
+                style: AppTypography.kSemiBold14
+                    .copyWith(color: colorScheme.secondaryContainer),
               )),
             )));
   }

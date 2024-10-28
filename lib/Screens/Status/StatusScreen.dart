@@ -1,14 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
 import 'package:mamaiknow/Screens/CommonWidgets/CommonButton.dart';
-
 import 'package:mamaiknow/Screens/Status/Components/CheckBox.dart';
 import 'package:mamaiknow/Screens/Status/MarriedScreen.dart';
 
@@ -50,12 +47,12 @@ class _StatusscreenState extends State<Statusscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.ksemiTransparentGrey,
+      backgroundColor: AppColors.kSecondary,
       appBar: AppBar(
-        backgroundColor: AppColors.ksemiTransparentGrey,
+        backgroundColor: AppColors.kPrimary,
         title: Text(
           'Status',
-          style: AppTypography.kBold14.copyWith(color: AppColors.kWhite),
+          style: AppTypography.kBold20.copyWith(color: AppColors.kSecondary),
         ),
         centerTitle: true,
       ),
@@ -66,8 +63,8 @@ class _StatusscreenState extends State<Statusscreen> {
             Center(
               child: Text(
                 'What’s your status?',
-                style:
-                    AppTypography.kSemiBold16.copyWith(color: AppColors.kWhite),
+                style: AppTypography.kSemiBold16
+                    .copyWith(color: AppColors.kPrimary),
               ),
             ),
             SizedBox(height: 40.h),

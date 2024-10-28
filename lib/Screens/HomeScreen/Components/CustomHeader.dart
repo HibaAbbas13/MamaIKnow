@@ -31,7 +31,7 @@ class CustomCalendarHeader extends StatelessWidget {
         ),
         Text(
           '$monthName $year',
-          style: AppTypography.kLight14.copyWith(color: AppColors.kWhite),
+          style: AppTypography.kBold20.copyWith(color: AppColors.kSecondary),
         ),
         IconButton(
           icon: SvgPicture.asset(AppIcons.arrow),

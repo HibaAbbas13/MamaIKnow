@@ -43,8 +43,7 @@ class HorizontalDateListState extends State<Capsule> {
     return Padding(
         padding: const EdgeInsets.only(left: 12, top: 12, right: 0),
         child: Container(
-            color: Colors.transparent,
-            height: 70.h,
+            height: 75.h,
             width: double.infinity,
             child: ListView.separated(
               controller: _scrollController,
@@ -57,10 +56,10 @@ class HorizontalDateListState extends State<Capsule> {
 
                 return Container(
                   width: 48.w,
-                  height: 68.h,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF1e1e1e),
-                    boxShadow: [
+                  height: 75.h,
+                  decoration: BoxDecoration(
+                    color: AppColors.kSecondary,
+                    boxShadow: const [
                       BoxShadow(
                         color: Color(0x1A000000),
                         offset: Offset(0, 4),
@@ -68,7 +67,7 @@ class HorizontalDateListState extends State<Capsule> {
                         spreadRadius: 0,
                       ),
                     ],
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(50.0),
                       bottomLeft: Radius.circular(50.0),
                       bottomRight: Radius.circular(50.0),
@@ -82,22 +81,22 @@ class HorizontalDateListState extends State<Capsule> {
                       children: [
                         Text(
                           weekday,
-                          style: AppTypography.kExtraLight10
-                              .copyWith(color: AppColors.kWhite),
+                          style: AppTypography.kLight12
+                              .copyWith(color: AppColors.kPrimary),
                         ),
                         SizedBox(height: 4.h),
                         Text(
                           day,
                           style: AppTypography.kBold16
-                              .copyWith(color: AppColors.kWhite),
+                              .copyWith(color: AppColors.kPrimary),
                         ),
                         SizedBox(height: 4.h),
                         Container(
-                          width: 4.w,
+                          width: 10.w,
                           height: 4.h,
                           decoration: BoxDecoration(
-                            color:
-                                AppColors.klime, // Change the color as needed
+                            color: AppColors
+                                .kPinkDark, // Change the color as needed
                             shape: BoxShape.circle,
                           ),
                         ),

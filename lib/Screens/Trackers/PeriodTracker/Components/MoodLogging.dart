@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mamaiknow/Data/AppColors.dart';
+import 'package:mamaiknow/Data/AppTypography.dart';
 
 class MoodLoggingWidget extends StatelessWidget {
   final String selectedMood;
@@ -14,22 +17,53 @@ class MoodLoggingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Define a list of moods and their corresponding emojis
+    final moods = [
+      '😊',
+      '😢',
+      '😐',
+      '😠',
+      '😃',
+      '😟',
+      '😒',
+      '😕',
+      '😌',
+    ];
+
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        DropdownButton<String>(
-          value: selectedMood,
-          items: ['Happy', 'Sad', 'Neutral']
-              .map((mood) => DropdownMenuItem<String>(
-                    value: mood,
-                    child: Text(mood),
-                  ))
-              .toList(),
-          onChanged: onMoodChanged,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: moods.map((mood) {
+            return GestureDetector(
+              onTap: () => onMoodChanged(mood), // Update mood on tap
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    mood, // Emoji
+                    style: TextStyle(
+                      fontSize: 20, // Adjust size as needed
+                      color: selectedMood == mood
+                          ? AppColors.kPrimary // Highlight selected mood
+                          : AppColors.kSecondary,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }).toList(),
         ),
+        SizedBox(height: 10.h),
         TextField(
           controller: notesController,
           decoration: InputDecoration(
+            fillColor: AppColors.kPrimary,
             hintText: 'Add Notes',
+            hintStyle: AppTypography.kSemiBold18.copyWith(
+              color: AppColors.kSecondary,
+            ),
           ),
         ),
       ],

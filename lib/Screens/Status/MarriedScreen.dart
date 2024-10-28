@@ -6,6 +6,9 @@ import 'package:get/get.dart';
 import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Data/AppTypography.dart';
 import 'package:mamaiknow/Screens/CommonWidgets/CommonButton.dart';
+import 'package:mamaiknow/Screens/LandingPage.dart';
+import 'package:mamaiknow/Screens/Trackers/PeriodTracker/PeriodTracker.dart';
+import 'package:mamaiknow/Screens/Trackers/TrackerScreen.dart';
 
 class UnMarriedScreen extends StatefulWidget {
   const UnMarriedScreen({super.key});
@@ -20,6 +23,7 @@ class _UnMarriedScreenState extends State<UnMarriedScreen> {
   String? periodDuration;
 
   Future<void> _selectDate(BuildContext context) async {
+    final colorScheme = Theme.of(context).colorScheme;
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate ?? DateTime.now(),
@@ -28,13 +32,13 @@ class _UnMarriedScreenState extends State<UnMarriedScreen> {
       helpText: 'Select Last Period Date',
       builder: (BuildContext context, Widget? child) {
         return Theme(
-          data: ThemeData.dark().copyWith(
-            colorScheme: ColorScheme.dark(
-              primary: AppColors.klime, // header background color
-              onPrimary: AppColors.kBlack, // header text color
-              onSurface: AppColors.kWhite, // body text color
+          data: ThemeData.light().copyWith(
+            colorScheme: ColorScheme.light(
+              primary: AppColors.kSecondary, // header background color
+              onPrimary: colorScheme.primary, // header text color
+              onSurface: colorScheme.primary, // body text color
             ),
-            dialogBackgroundColor: AppColors.kblueGrey,
+            dialogBackgroundColor: colorScheme.primary,
           ),
           child: child!,
         );
@@ -66,15 +70,16 @@ class _UnMarriedScreenState extends State<UnMarriedScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
-      backgroundColor: AppColors.ksemiTransparentGrey,
+      backgroundColor: AppColors.kSecondary,
       appBar: AppBar(
-        backgroundColor: AppColors.ksemiTransparentGrey,
+        backgroundColor: AppColors.kSecondary,
         automaticallyImplyLeading: true,
         centerTitle: true,
         title: Text(
           "UnMarried",
-          style: AppTypography.kBold14.copyWith(color: AppColors.kWhite),
+          style: AppTypography.kBold20.copyWith(color: colorScheme.primary),
         ),
         leading: IconButton(
             onPressed: () {
@@ -82,7 +87,7 @@ class _UnMarriedScreenState extends State<UnMarriedScreen> {
             },
             icon: Icon(
               Icons.arrow_back,
-              color: AppColors.kWhite,
+              color: colorScheme.primary,
             )),
       ),
       body: Padding(
@@ -92,8 +97,8 @@ class _UnMarriedScreenState extends State<UnMarriedScreen> {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
                 "Length of Cycle",
-                style:
-                    AppTypography.kSemiBold16.copyWith(color: AppColors.kWhite),
+                style: AppTypography.kSemiBold16
+                    .copyWith(color: colorScheme.primary),
               ),
               InkWell(
                 child: Container(
@@ -101,26 +106,26 @@ class _UnMarriedScreenState extends State<UnMarriedScreen> {
                   width: 140.w,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.r),
-                    color: AppColors.kblueGrey,
+                    color: colorScheme.primary,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: DropdownButton<String>(
-                      iconEnabledColor: AppColors.klime,
+                      iconEnabledColor: AppColors.kSecondary,
                       isExpanded: true,
                       isDense: true,
                       underline: 0.horizontalSpace,
-                      dropdownColor: AppColors.kblueGrey,
+                      dropdownColor: AppColors.kPrimary,
                       value: selectedDay,
                       items: List.generate(31, (index) {
                         final day = (index + 1).toString();
                         return DropdownMenuItem<String>(
                           value: day,
                           child: Text(
-                            '$day days',
+                            day == '1' ? '1 day' : '$day days',
                             style: AppTypography.kLight16
-                                .copyWith(color: AppColors.kWhite),
-                            selectionColor: AppColors.klime,
+                                .copyWith(color: AppColors.kSecondary),
+                            selectionColor: AppColors.kSecondary,
                           ),
                         );
                       }),
@@ -136,14 +141,14 @@ class _UnMarriedScreenState extends State<UnMarriedScreen> {
             ]),
             SizedBox(height: 30.h),
             Divider(
-              color: AppColors.kblueGrey,
+              color: colorScheme.primary,
             ),
             SizedBox(height: 30.h),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
                 "Last Period Date",
-                style:
-                    AppTypography.kSemiBold16.copyWith(color: AppColors.kWhite),
+                style: AppTypography.kSemiBold16
+                    .copyWith(color: colorScheme.primary),
               ),
               GestureDetector(
                 onTap: () => _selectDate(context),
@@ -152,13 +157,14 @@ class _UnMarriedScreenState extends State<UnMarriedScreen> {
                   width: 140.w,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.r),
-                    color: AppColors.kblueGrey,
+                    color: colorScheme.primary,
                   ),
                   child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: DropdownButton<String>(
+                        dropdownColor: AppColors.kSecondary,
                         icon: Icon(Icons.calendar_today,
-                            size: 16, color: AppColors.klime),
+                            size: 16, color: AppColors.kSecondary),
                         underline: 0.horizontalSpace,
                         onChanged: (value) {
                           _selectDate(context);
@@ -169,7 +175,7 @@ class _UnMarriedScreenState extends State<UnMarriedScreen> {
                               ? "${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}"
                               : 'Select Date',
                           style: AppTypography.kLight16
-                              .copyWith(color: AppColors.kWhite),
+                              .copyWith(color: AppColors.kSecondary),
                         ),
                         isExpanded: true,
                       )),
@@ -178,40 +184,40 @@ class _UnMarriedScreenState extends State<UnMarriedScreen> {
             ]),
             SizedBox(height: 30.h),
             Divider(
-              color: AppColors.kblueGrey,
+              color: colorScheme.primary,
             ),
             SizedBox(height: 30.h),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
               Text(
                 "Period Duration",
-                style:
-                    AppTypography.kSemiBold16.copyWith(color: AppColors.kWhite),
+                style: AppTypography.kSemiBold16
+                    .copyWith(color: colorScheme.primary),
               ),
               Container(
                 height: 48.h,
                 width: 140.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.r),
-                  color: AppColors.kblueGrey,
+                  color: colorScheme.primary,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8),
                   child: DropdownButton<String>(
-                    iconEnabledColor: AppColors.klime,
+                    iconEnabledColor: AppColors.kSecondary,
                     isExpanded: true,
                     isDense: true,
                     underline: 0.horizontalSpace,
-                    dropdownColor: AppColors.kblueGrey,
+                    dropdownColor: AppColors.kPrimary,
                     value: periodDuration,
                     items: List.generate(10, (index) {
                       final day = (index + 1).toString();
                       return DropdownMenuItem<String>(
                         value: day,
                         child: Text(
-                          '$day days',
+                          day == '1' ? '1 day' : '$day days',
                           style: AppTypography.kLight16
-                              .copyWith(color: AppColors.kWhite),
-                          selectionColor: AppColors.klime,
+                              .copyWith(color: AppColors.kSecondary),
+                          selectionColor: AppColors.kSecondary,
                         ),
                       );
                     }),
@@ -226,10 +232,16 @@ class _UnMarriedScreenState extends State<UnMarriedScreen> {
             ]),
             SizedBox(height: 30.h),
             Divider(
-              color: AppColors.kblueGrey,
+              color: colorScheme.primary,
             ),
             SizedBox(height: 300.h),
-            CommomButton2(onTap: _saveToFirestore, text: 'Next')
+            CommomButton2(
+              onTap: () {
+                _saveToFirestore();
+                Get.to(() => LandingPageView());
+              },
+              text: 'Next',
+            ),
           ],
         ),
       ),

@@ -11,7 +11,7 @@ class RemainderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         width: double.infinity,
-        height: 164.h,
+        height: 180.h,
         child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: 5,
@@ -25,13 +25,13 @@ class RemainderCard extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 20.0),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20.r),
-                    color: AppColors.kGrey900),
+                    color: AppColors.kPrimary),
                 child: Column(
                   children: [
                     Text(
                       "Log your daily symptoms",
-                      style: AppTypography.kSemiBold12
-                          .copyWith(color: AppColors.kWhite),
+                      style: AppTypography.kSemiBold16
+                          .copyWith(color: AppColors.kSecondary),
                       textAlign: TextAlign.right,
                     ),
                     SizedBox(
@@ -40,11 +40,11 @@ class RemainderCard extends StatelessWidget {
                     Text(
                       "10:00 AM",
                       style: AppTypography.kSemiBold24
-                          .copyWith(color: AppColors.kWhite),
+                          .copyWith(color: AppColors.kSecondary),
                       textAlign: TextAlign.right,
                     ),
                     SizedBox(
-                      height: 20.h,
+                      height: 10.h,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
@@ -53,21 +53,21 @@ class RemainderCard extends StatelessWidget {
                       child: Row(
                         children: [
                           CommomButton(
-                              color: AppColors.kpink500,
-                              color2: AppColors.kWhite,
+                              color: AppColors.kPrimary,
+                              color2: AppColors.kSecondary,
                               onTap: () {},
                               width: 96.w,
-                              height: 40.h,
+                              height: 50.h,
                               icon: "assets/icons/alarmsleep.svg"),
                           SizedBox(
                             width: 8.w,
                           ),
                           CommomButton(
-                              color: AppColors.klime,
-                              color2: AppColors.kBlack,
+                              color: AppColors.kPrimary,
+                              color2: AppColors.kSecondary,
                               onTap: () {},
                               width: 96.w,
-                              height: 40.h,
+                              height: 50.h,
                               icon: "assets/icons/checkcircle.svg")
                         ],
                       ),

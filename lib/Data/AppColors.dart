@@ -2,35 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class AppColors {
-  static Color kPrimary = Color.fromARGB(0, 255, 27, 95);
+  static Color kPrimary = const Color(0XFFCA7CD8);
+  static Color kSecondary = const Color(0XFFF4E5F7);
+  static Color kBackGroundColor = const Color(0XFF2D3047);
+  static Color kLightAccentColor = const Color(0XFFF4E5F7);
+  static Color kGrey3Color = const Color(0XFF272828);
+  static Color kBGColor = const Color(0XFF181A1A);
+  static Color kBlackColor = const Color(0XFF000000);
+  static Color kWhiteColor = const Color(0XFFFFFFFF);
 
+  // Primary pink color
   static Color kWhite = const Color(0xFFFFFFFF);
   static Color kBlack = const Color(0xFF000000);
-
-  static Color kGrey900 = const Color(0xFF1e1e1e);
-  static Color kblueGrey = const Color(0xFF2f2f2f);
-  static Color kGrey01 = const Color(0XFF111111);
-  static Color kGrey02 = const Color(0xFF181818);
-
-  static Color kRed = const Color(0xFFFF002D);
-  static Color kblue = const Color(0xFF00bdff);
-  static Color kblue900 = const Color(0xFF006b99);
-  static Color korange = const Color(0xFFff5b00);
-  static Color kpink500 = const Color(0xFFff1a5f);
-  static Color kpink = const Color(0xFF990f39);
-  static Color kpurple = const Color(0xFF430099);
-  static Color kdeeppurple = const Color(0xFF7000ff);
-  static Color klime = const Color(0xFFD1FF1B);
-  static Color ksemiTransparentGrey = const Color(0xCC1E1E1E); // #1E1E1ECC
-
-  static LinearGradient customGradient = const LinearGradient(
-    colors: [
-      Color(0xFF1E1E1ECC), // Light Blue
-      Color(0xFFFF002D), // Red
-    ],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  static Color kPinkLight =
+      const Color(0xFFFFC1D1); // Light pink for backgrounds
+  static Color kPinkDark = const Color(0xFFFF1A5F); // Darker pink for accents
 
   static const defaultOverlay = SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,

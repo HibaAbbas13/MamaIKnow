@@ -1,129 +1,81 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:mamaiknow/Controllers/OnBoarding_Controller.dart';
-import 'package:mamaiknow/Data/AppColors.dart';
-import 'package:mamaiknow/Data/AppTypography.dart';
-import 'package:mamaiknow/Models/OnbordingModel.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:mamaiknow/Screens/Auth/SignInScreen.dart';
-import 'package:mamaiknow/Screens/Auth/SignupScreen.dart';
+import 'package:mamaiknow/widgets/primary_button.dart';
+import 'package:mamaiknow/Data/AppColors.dart';
 import 'package:mamaiknow/Screens/OnBoradingScreen/components/onbording_card.dart';
+import 'package:mamaiknow/models/OnbordingModel.dart';
 
-class OnboardingView extends StatefulWidget {
-  OnboardingView({super.key});
+class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({super.key});
 
   @override
-  State<OnboardingView> createState() => _OnboardingViewState();
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
 
-class _OnboardingViewState extends State<OnboardingView> {
-  final OnboardingController controller = Get.put(OnboardingController());
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  final PageController pageController = PageController(initialPage: 0);
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.ksemiTransparentGrey,
-      body: Padding(
-        padding: const EdgeInsets.only(top: 84),
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView.builder(
-                controller: controller.pageController,
-                physics: const NeverScrollableScrollPhysics(),
-                onPageChanged: controller.onPageChanged,
-                itemCount: onboardingList.length,
-                itemBuilder: (context, index) {
-                  final onboarding = onboardingList[index];
-                  return OnBoardingCard(onboarding: onboarding);
-                },
-              ),
+      backgroundColor: AppColors.kWhite,
+      body: Column(
+        children: [
+          Expanded(
+            child: Image.asset(pageViewList[_currentIndex].image),
+          ),
+          Expanded(
+            child: PageView.builder(
+              itemCount: pageViewList.length,
+              controller: pageController,
+              onPageChanged: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+              itemBuilder: (context, index) {
+                return OnboardingCard(
+                  onBoardingList: pageViewList,
+                  currentIndex: index,
+                  pageController: pageController,
+                );
+              },
             ),
-            Obx(() {
-              return onboardingList[controller.currentIndex.value]
-                      .hasSignUpSignInButtons
-                  ? Column(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Get.to(() => SignUpScreen());
-                          },
-                          child: Container(
-                            height: 50.h,
-                            width: 350.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100.r),
-                              color: AppColors.klime,
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 36),
-                              child: Center(
-                                child: Text(
-                                  "SignUp",
-                                  style: AppTypography.kLight14
-                                      .copyWith(color: AppColors.kBlack),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 12.h),
-                        InkWell(
-                          onTap: () {
-                            Get.to(() => SignInScreen());
-                          },
-                          child: Container(
-                            height: 50.h,
-                            width: 350.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100.r),
-                              color: AppColors.kGrey01,
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 36),
-                              child: Center(
-                                child: Text(
-                                  "SignIn",
-                                  style: AppTypography.kLight14
-                                      .copyWith(color: AppColors.kWhite),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  : const SizedBox.shrink();
-            }),
-            SizedBox(height: 50.h),
-            Obx(() {
-              return TextButton(
-                onPressed: controller.nextPage,
-                child: Container(
-                  width: 64.w,
-                  height: 48.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    border: Border.all(color: AppColors.klime),
-                  ),
-                  child: Center(
-                    child: onboardingList[controller.currentIndex.value]
-                            .showArrowButton
-                        ? Icon(
-                            Icons.arrow_forward_rounded,
-                            color: AppColors.klime,
-                          )
-                        : Text(
-                            "Finish",
-                            style: AppTypography.kLight14
-                                .copyWith(color: AppColors.klime),
-                          ),
-                  ),
-                ),
-              );
-            }),
+          ),
+        ],
+      ),
+      bottomSheet: Container(
+        color: Colors.white,
+        height: 150,
+        width: double.infinity, // Increased height of the bottom sheet
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 20), // Add some top padding
+            PrimaryButton(
+              onTap: () {
+                if (_currentIndex == pageViewList.length - 1) {
+                  Get.to(const SignInScreen());
+                } else {
+                  pageController.nextPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.fastOutSlowIn,
+                  );
+                }
+              },
+              text: _currentIndex == pageViewList.length - 1
+                  ? 'Get Started'
+                  : 'Continue',
+              bgColor: AppColors.kPrimary,
+              borderRadius: 8,
+              height: 48,
+              width: 250,
+              textColor: AppColors.kWhiteColor,
+            ),
+            const SizedBox(height: 20), // Add some bottom padding
           ],
         ),
       ),

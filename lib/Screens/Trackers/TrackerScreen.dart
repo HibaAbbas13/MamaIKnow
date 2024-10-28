@@ -23,9 +23,9 @@ class _TrackerScreenState extends State<TrackerScreen> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              AppColors.kGrey900,
-              AppColors.klime,
-              AppColors.kGrey900,
+              AppColors.kPrimary,
+              AppColors.kSecondary,
+              AppColors.kPrimary,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,

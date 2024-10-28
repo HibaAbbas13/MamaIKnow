@@ -20,7 +20,7 @@ class _HomeSectionState extends State<HomeSection> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 300.h,
+      height: 310.h,
       child: ListView.separated(
         controller: _scrollController,
         scrollDirection: Axis.horizontal,
@@ -31,7 +31,7 @@ class _HomeSectionState extends State<HomeSection> {
             width: 240.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24.r),
-              color: AppColors.ksemiTransparentGrey,
+              color: AppColors.kPrimary,
             ),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -42,50 +42,48 @@ class _HomeSectionState extends State<HomeSection> {
                       height: 50.h,
                       width: 50.h,
                       decoration: BoxDecoration(
-                        color: AppColors.kGrey02,
+                        color: AppColors.kSecondary,
                         borderRadius: BorderRadius.circular(100.r),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(13.0),
                         child: SvgPicture.asset(
                           data.image,
+                          color: AppColors.kPrimary,
                         ),
                       ),
                     ),
                     SizedBox(width: 16.w),
                     Text(data.title,
                         style: AppTypography.kMedium16
-                            .copyWith(color: AppColors.kWhite)),
+                            .copyWith(color: AppColors.kSecondary)),
                   ]),
                   SizedBox(height: 20.h),
                   Text(data.time,
                       style: AppTypography.kExtraBold24
-                          .copyWith(color: AppColors.klime)),
+                          .copyWith(color: AppColors.kSecondary)),
                   SizedBox(height: 20.h),
                   Text(data.name,
                       style: AppTypography.kExtraLight12
-                          .copyWith(color: AppColors.kWhite)),
+                          .copyWith(color: AppColors.kSecondary)),
                   Text(data.date,
                       style: AppTypography.kExtraBold24
-                          .copyWith(color: AppColors.klime)),
+                          .copyWith(color: AppColors.kSecondary)),
                   SizedBox(height: 20.h),
                   Row(
                     children: [
                       Container(
                         height: 50.h,
-                        width: 142.w,
+                        width: 130.w,
                         decoration: BoxDecoration(
-                          color: AppColors.klime,
+                          color: AppColors.kSecondary,
                           borderRadius: BorderRadius.circular(100.r),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 16, bottom: 16),
-                          child: Center(
-                            child: Text(
-                              data.log,
-                              style: AppTypography.kSemiBold14
-                                  .copyWith(color: AppColors.kBlack),
-                            ),
+                        child: Center(
+                          child: Text(
+                            data.log,
+                            style: AppTypography.kSemiBold14
+                                .copyWith(color: AppColors.kPrimary),
                           ),
                         ),
                       ),
@@ -98,9 +96,12 @@ class _HomeSectionState extends State<HomeSection> {
                           borderRadius: BorderRadius.circular(100.r),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(13.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: SvgPicture.asset(
                             data.icon,
+                            height: 20.h,
+                            width: 20.w,
+                            color: AppColors.kSecondary,
                           ),
                         ),
                       ),
@@ -112,7 +113,7 @@ class _HomeSectionState extends State<HomeSection> {
           );
         },
         separatorBuilder: (context, index) {
-          return SizedBox(width: 12.w);
+          return SizedBox(width: 5.w);
         },
         itemCount: widget.cycleDataList.length,
       ),

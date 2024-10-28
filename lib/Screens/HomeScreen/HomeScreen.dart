@@ -42,9 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              AppColors.kGrey900,
-              AppColors.klime,
-              AppColors.kGrey900,
+              AppColors.kPrimary,
+              AppColors.kSecondary,
+              AppColors.kPrimary,
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -52,10 +52,23 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: Scaffold(
             backgroundColor: Colors.transparent,
-            appBar: CustomAppBar(
-              title: 'Hello,',
-              subtitle: 'Defia Yoe',
-              circleColor: AppColors.klime,
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              title: Text(
+                'HOME PAGE',
+                style:
+                    AppTypography.kBold20.copyWith(color: AppColors.kSecondary),
+              ),
+              centerTitle: true,
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: AppColors.kSecondary,
+                ),
+              ),
             ),
             body: SafeArea(
               child: Container(
@@ -100,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Text(
                           "Upcoming Remainders",
-                          style: AppTypography.kSemiBold16
+                          style: AppTypography.kBold18
                               .copyWith(color: AppColors.kWhite),
                           textAlign: TextAlign.right,
                         ),
@@ -113,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         Text(
                           "Quick Links",
-                          style: AppTypography.kSemiBold16
+                          style: AppTypography.kBold18
                               .copyWith(color: AppColors.kWhite),
                           textAlign: TextAlign.right,
                         ),

@@ -22,7 +22,7 @@ class _QuickLinkCardState extends State<QuickLinkCard> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 260.h,
+      height: 280.h,
       child: ListView.separated(
         controller: _scrollController,
         scrollDirection: Axis.horizontal,
@@ -49,19 +49,20 @@ class _QuickLinkCardState extends State<QuickLinkCard> {
                       children: [
                         SvgPicture.asset(
                           data.image,
+                          color: AppColors.kWhite,
                         ),
                         Container(
                           height: 40.h,
                           width: 60.w,
                           decoration: BoxDecoration(
-                            color: AppColors.kGrey900,
+                            color: AppColors.kWhite,
                             borderRadius: BorderRadius.circular(100.r),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: SvgPicture.asset(
                               data.icon,
-                              color: AppColors.kWhite,
+                              color: AppColors.kPrimary,
                             ),
                           ),
                         ),
@@ -69,16 +70,16 @@ class _QuickLinkCardState extends State<QuickLinkCard> {
                   SizedBox(height: 12.h),
                   Text(data.title,
                       style: AppTypography.kSemiBold20
-                          .copyWith(color: AppColors.kWhite)),
+                          .copyWith(color: AppColors.kSecondary)),
                   SizedBox(height: 20.h),
                   Text(data.description,
                       style: AppTypography.kExtraLight12
-                          .copyWith(color: AppColors.kWhite)),
+                          .copyWith(color: AppColors.kSecondary)),
                   SizedBox(height: 20.h),
                   InkWell(
                       onTap: () {},
                       child: Container(
-                          height: 50.h,
+                          height: 60.h,
                           width: 200.w,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(100.r),

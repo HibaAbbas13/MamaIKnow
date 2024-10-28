@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:mamaiknow/Models/OnbordingModel.dart';
+//import 'package:mamaiknow/Models/OnbordingModel.dart';
 import 'package:mamaiknow/Screens/HomeScreen/HomeScreen.dart';
 
 class OnboardingController extends GetxController {
@@ -12,7 +12,8 @@ class OnboardingController extends GetxController {
   }
 
   void nextPage() {
-    if (currentIndex.value < onboardingList.length - 1) {
+    if (currentIndex.value < 3) {
+      // Assuming there are 4 pages in the onboarding process
       pageController.nextPage(
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeIn,

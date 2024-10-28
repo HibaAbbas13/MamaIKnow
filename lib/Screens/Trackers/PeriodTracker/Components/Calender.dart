@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mamaiknow/Data/AppColors.dart';
+import 'package:mamaiknow/Data/AppTypography.dart';
 
 class CalendarWidget extends StatefulWidget {
   final Function(DateTime) onDateChanged;
@@ -39,18 +41,22 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       children: [
         ElevatedButton(
           onPressed: () => _pickDate(context),
-          child: const Text('Select Last Period Date'),
+          child: Text('Select Last Period Date',
+              style: AppTypography.kBold18.copyWith(
+                  color: AppColors.kPrimary, fontWeight: FontWeight.bold)),
         ),
         const SizedBox(height: 16),
         if (_selectedDate != null)
           Text(
             'Last Period Date: ${DateFormat.yMMMd().format(_selectedDate!)}',
-            style: const TextStyle(fontSize: 16),
+            style: AppTypography.kBold18.copyWith(
+                color: AppColors.kPrimary, fontWeight: FontWeight.bold),
           ),
         if (_nextPeriodDate != null)
           Text(
             'Next Estimated Period Date: ${DateFormat.yMMMd().format(_nextPeriodDate!)}',
-            style: const TextStyle(fontSize: 16),
+            style: AppTypography.kBold18.copyWith(
+                color: AppColors.kPrimary, fontWeight: FontWeight.bold),
           ),
       ],
     );

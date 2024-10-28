@@ -25,7 +25,7 @@ class TrackerCard extends StatelessWidget {
               // Handle onTap if needed
             },
             child: Container(
-              height: 193.h,
+              height: 250.h,
               width: 169.w,
               decoration: BoxDecoration(
                 color: data.color,
@@ -38,22 +38,22 @@ class TrackerCard extends StatelessWidget {
                   children: [
                     Text(data.title,
                         style: AppTypography.kMedium12
-                            .copyWith(color: AppColors.kWhite)),
+                            .copyWith(color: AppColors.kSecondary)),
                     SizedBox(height: 12.h),
                     Text(data.day,
                         style: AppTypography.kBold24
-                            .copyWith(color: AppColors.klime)),
+                            .copyWith(color: AppColors.kSecondary)),
                     SizedBox(height: 12.h),
                     Text(data.subtitle,
                         style: AppTypography.kExtraLight14
-                            .copyWith(color: AppColors.kWhite)),
+                            .copyWith(color: AppColors.kSecondary)),
                     Text(data.date,
                         style: AppTypography.kBold24
-                            .copyWith(color: AppColors.klime)),
+                            .copyWith(color: AppColors.kSecondary)),
                     SizedBox(height: 17.h),
                     Text(data.type,
                         style: AppTypography.kExtraLight14
-                            .copyWith(color: AppColors.kWhite)),
+                            .copyWith(color: AppColors.kSecondary)),
                   ],
                 ),
               ),
@@ -70,7 +70,7 @@ class TrackerCard extends StatelessWidget {
 class TrackerCard2 extends StatelessWidget {
   final List<LowerCard> lowercard;
 
-  const TrackerCard2({Key? key, required this.lowercard}) : super(key: key);
+  const TrackerCard2({super.key, required this.lowercard});
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +90,8 @@ class TrackerCard2 extends StatelessWidget {
               Navigator.push<void>(
                 context,
                 MaterialPageRoute<void>(
-                  builder: (BuildContext context) => PeriodTrackerScreen(),
+                  builder: (BuildContext context) =>
+                      const PeriodTrackerScreen(),
                 ),
               );
             },
@@ -99,7 +100,7 @@ class TrackerCard2 extends StatelessWidget {
               width: 169.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24.r),
-                color: AppColors.ksemiTransparentGrey,
+                color: AppColors.kPrimary,
               ),
               child: Padding(
                 padding: const EdgeInsets.only(top: 20.0, left: 20, right: 20),
@@ -112,7 +113,7 @@ class TrackerCard2 extends StatelessWidget {
                           height: 50.h,
                           width: 50.h,
                           decoration: BoxDecoration(
-                            color: AppColors.kGrey900,
+                            color: AppColors.kSecondary,
                             borderRadius: BorderRadius.circular(100.r),
                           ),
                           child: Padding(
@@ -124,7 +125,7 @@ class TrackerCard2 extends StatelessWidget {
                           padding: const EdgeInsets.all(13.0),
                           child: SvgPicture.asset(
                             data.icon,
-                            color: AppColors.kWhite,
+                            color: AppColors.kSecondary,
                           ),
                         ),
                       ],
@@ -132,7 +133,7 @@ class TrackerCard2 extends StatelessWidget {
                     SizedBox(height: 39.h),
                     Text(data.title,
                         style: AppTypography.kMedium16
-                            .copyWith(color: AppColors.kWhite)),
+                            .copyWith(color: AppColors.kSecondary)),
                   ],
                 ),
               ),
